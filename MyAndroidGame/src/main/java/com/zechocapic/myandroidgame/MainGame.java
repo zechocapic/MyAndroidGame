@@ -15,8 +15,8 @@ public class MainGame extends Activity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "Maingame activity onCreate");
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        /*requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
 
         setContentView(new AndroidGameSurfaceView(this));
         Log.d(TAG, "SurfaceView inserted");
