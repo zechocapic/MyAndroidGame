@@ -13,13 +13,23 @@ public class AndroidObstacle {
 
     private int xPos;
     private int yPos;
+    private int speed;
     private Paint obstaclePaint;
 
-    public AndroidObstacle(int xPos) {
+    public AndroidObstacle(int xPos, int speed) {
         this.xPos = xPos;
         this.yPos = 100;
+        this.speed = speed;
         this.obstaclePaint= new Paint();
         obstaclePaint.setColor(Color.RED);
+    }
+
+    public int getxPos() {
+        return xPos;
+    }
+
+    public int getyPos() {
+        return yPos;
     }
 
     public void draw(Canvas canvas) {
@@ -28,7 +38,10 @@ public class AndroidObstacle {
     }
 
     public void move() {
-        this.yPos++;
+        if (yPos < 1200) {
+            yPos += speed;
+        } else yPos = 100;
+
     }
 
 }

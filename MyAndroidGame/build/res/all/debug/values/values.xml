@@ -7,7 +7,15 @@
     <!-- From: file:/D:/WorkSpaces/AndroidStudio/MyAndroidGameProject/MyAndroidGame/src/main/res/values/strings.xml -->
     <string name="action_settings">Settings</string>
     <string name="app_name">My Android Game</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_credits">Hello crediter !</string>
+    <string name="hello_options">Hello optioner !</string>
+    <string name="hello_play">Hello player !</string>
+    <string name="hello_rules">Hello ruler !</string>
+    <string name="hello_world">Hello world !</string>
+    <string name="title_activity_credits">Credits</string>
+    <string name="title_activity_options">Options</string>
+    <string name="title_activity_play">Play</string>
+    <string name="title_activity_rules">Rules</string>
     <!-- From: file:/D:/WorkSpaces/AndroidStudio/MyAndroidGameProject/MyAndroidGame/src/main/res/values/styles.xml -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
