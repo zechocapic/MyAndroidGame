@@ -13,6 +13,9 @@ import android.util.Log;
 public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
     private static final String TAG = GameSurfaceView.class.getSimpleName();
 
+    public static final int GAME_HEIGHT = 1280;
+    public static final int GAME_WIDTH = 768;
+
     private GameThread gameThread;
 
     public GameSurfaceView(Context context) {
@@ -53,6 +56,7 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
                 e.printStackTrace();
             }
         }
+        Log.d(TAG, "Surface destroyed");
     }
 
     @Override
@@ -60,9 +64,9 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             Log.d(TAG, "x = " + event.getX() + " ; y = " + event.getY());
             if (event.getX() < 384) {
-                gameThread.manageEvents(AndroidCar.MOVE_CAR_LEFT);
+                gameThread.manageEvents(GameCar.MOVE_CAR_LEFT);
             } else {
-                gameThread.manageEvents(AndroidCar.MOVE_CAR_RIGHT);
+                gameThread.manageEvents(GameCar.MOVE_CAR_RIGHT);
             }
         }
         return super.onTouchEvent(event);

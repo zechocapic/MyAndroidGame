@@ -18,6 +18,42 @@ public class MainGame extends Activity {
         setContentView(R.layout.activity_main_game);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "Maingame activity onRestart");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "Maingame activity onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "Maingame activity onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "Maingame activity onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "Maingame activity onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "Maingame activity onDestroy");
+    }
+
     public void onClickPlay(View v) {
         Toast.makeText(this, "You clicked on Play !", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, Play.class);

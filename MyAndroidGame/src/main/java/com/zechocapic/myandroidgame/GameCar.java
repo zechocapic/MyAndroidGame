@@ -8,8 +8,8 @@ import android.util.Log;
 /**
  * Created by zechocapic on 30/07/13.
  */
-public class AndroidCar {
-    private static String TAG = AndroidCar.class.getSimpleName();
+public class GameCar {
+    private static String TAG = GameCar.class.getSimpleName();
 
     public final static int MOVE_CAR_LEFT = -1;
     public final static int MOVE_CAR_RIGHT = 1;
@@ -19,8 +19,8 @@ public class AndroidCar {
     private int lateralSpeed;
     private Paint carPaint;
 
-    public AndroidCar(int lateralSpeed) {
-        this.xPos = 150;
+    public GameCar(int lateralSpeed) {
+        this.xPos = GameSurfaceView.GAME_WIDTH / 2;
         this.yPos = 1000;
         this.lateralSpeed = lateralSpeed;
         this.carPaint = new Paint();
@@ -36,7 +36,7 @@ public class AndroidCar {
     }
 
     public void draw(Canvas canvas) {
-        canvas.drawRect(xPos - 32, yPos - 32, xPos + 32, yPos +32, carPaint);
+        canvas.drawRect(xPos - 32, yPos - 48, xPos + 32, yPos + 48, carPaint);
         Log.d(TAG, "x = " + xPos + " ; y = " + yPos);
     }
 
