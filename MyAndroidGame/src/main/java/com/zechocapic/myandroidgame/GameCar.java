@@ -13,6 +13,7 @@ public class GameCar {
 
     public final static int MOVE_CAR_LEFT = -1;
     public final static int MOVE_CAR_RIGHT = 1;
+    public final static int MOVE_CAR_NOT = 0;
 
     private int xPos;
     private int yPos;
@@ -42,9 +43,13 @@ public class GameCar {
 
     public void move(int movement) {
         if (movement == MOVE_CAR_LEFT) {
-            this.xPos -= lateralSpeed;
-        } else {
-            this.xPos += lateralSpeed;
+            if (this.xPos > 166) {
+                this.xPos -= lateralSpeed;
+            }
+        } else if  (movement == MOVE_CAR_RIGHT) {
+            if (this.xPos < 602) {
+                this.xPos += lateralSpeed;
+            }
         }
     }
 

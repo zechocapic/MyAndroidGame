@@ -62,13 +62,17 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            Log.d(TAG, "x = " + event.getX() + " ; y = " + event.getY());
+            Log.d(TAG, "ACTION_DOWN : x = " + event.getX() + " ; y = " + event.getY());
             if (event.getX() < 384) {
                 gameThread.manageEvents(GameCar.MOVE_CAR_LEFT);
             } else {
                 gameThread.manageEvents(GameCar.MOVE_CAR_RIGHT);
             }
         }
-        return super.onTouchEvent(event);
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            Log.d(TAG, "ACTION_UP : x = " + event.getX() + " ; y = " + event.getY());
+            gameThread.manageEvents(GameCar.MOVE_CAR_NOT);
+        }
+        return true;
     }
 }

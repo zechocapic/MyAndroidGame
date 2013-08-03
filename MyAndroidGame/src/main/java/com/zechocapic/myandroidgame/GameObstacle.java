@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
 
+import java.util.Random;
+
 /**
  * Created by zechocapic on 30/07/13.
  */
@@ -40,7 +42,11 @@ public class GameObstacle {
     public void move() {
         if (yPos < 1200) {
             yPos += speed;
-        } else yPos = 100;
+        } else {
+            Random random = new Random();
+            this.speed = random.nextInt(10) + 1;
+            yPos = 100;
+        }
 
     }
 

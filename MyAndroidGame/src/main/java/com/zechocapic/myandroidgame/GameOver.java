@@ -13,11 +13,15 @@ public class GameOver {
     public GameOver() {
         gameOverPaint = new Paint();
         gameOverPaint.setColor(Color.WHITE);
-        gameOverPaint.setTextSize(60);
+        gameOverPaint.setTextSize(100);
+        gameOverPaint.setTextAlign(Paint.Align.CENTER);
     }
 
     public void draw (Canvas canvas) {
-        canvas.drawText("Game Over", 300, 600, gameOverPaint);
+        canvas.drawColor(Color.RED);
+        int xPos = canvas.getWidth() / 2;
+        int yPos = (int) ((canvas.getHeight() /2) - ((gameOverPaint.descent() + gameOverPaint.ascent()) / 2));
+        canvas.drawText("Game Over", xPos, yPos, gameOverPaint);
     }
 
 }

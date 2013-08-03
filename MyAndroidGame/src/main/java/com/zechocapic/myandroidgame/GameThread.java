@@ -25,6 +25,7 @@ public class GameThread extends Thread {
     private SurfaceHolder surfaceHolder;
     private GameSurfaceView gameSurfaceView;
     private GameCar gameCar;
+    private int carMovement = 0;
     private GameObstacle[] gameObstacles;
     private GameScenery gameScenery;
     private GameOver gameOver;
@@ -39,7 +40,7 @@ public class GameThread extends Thread {
         for (int i=0; i<5; i++) {
             gameObstacles[i] = new GameObstacle(184 + ( i * 100), 1 + random.nextInt(10));
         }
-        this.gameScenery = new GameScenery(10);
+        this.gameScenery = new GameScenery(20);
         this.gameOver = new GameOver();
     }
 
@@ -66,6 +67,7 @@ public class GameThread extends Thread {
 
             // update game
             if (gameState == GAME_OK) {
+                gameCar.move(carMovement);
                 gameScenery.move();
                 for (int i = 0; i < 5; i++) {
                     gameObstacles[i].move();
@@ -119,27 +121,22 @@ public class GameThread extends Thread {
 
     public void canvasDraw (Canvas canvas, int gameState) {
         if (gameState == GAME_OK) {
-            //canvas.drawColor(Color.BLACK);
             gameScenery.draw(canvas);
             gameCar.draw(canvas);
             for (int i = 0; i < 5; i++) {
                 gameObstacles[i].draw(canvas);
             }
         } else {
-            canvas.drawColor(Color.RED);
             gameOver.draw(canvas);
         }
     }
 
     public void manageEvents(int event) {
-        gameCar.move(event);
+        this.carMovement = event;
     }
 
     public boolean detectCollision() {
         for (int i = 0; i < 5; i++) {
-            /*if (gameCar.getxPos() == gameObstacles[i].getxPos() && gameCar.getyPos() == gameObstacles[i].getyPos()) {
-                return true;
-            }*/
             if (Math.abs(gameObstacles[i].getxPos() - gameCar.getxPos()) < 64 && Math.abs(gameCar.getyPos() - gameObstacles[i].getyPos()) < 96) {
                 return true;
             }
