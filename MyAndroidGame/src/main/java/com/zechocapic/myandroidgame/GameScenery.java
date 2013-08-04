@@ -37,14 +37,28 @@ public class GameScenery {
     }
 
     public void draw(Canvas canvas) {
-        canvas.drawRect(0, 0, 133, GameSurfaceView.GAME_HEIGHT, grassPaint);
+        int height = canvas.getHeight();
+        canvas.drawRect(0, 0, 133, height, grassPaint);
+        canvas.drawRect(134, 0, 634,  height, roadPaint);
+        canvas.drawRect(635, 0, 768,  height, grassPaint);
+        canvas.drawCircle(66, yPos, 32, treePaint);
+        canvas.drawCircle(702, yPos, 32, treePaint);
+        canvas.drawCircle(66, yPos + 400, 32, treePaint);
+        canvas.drawCircle(702, yPos + 400, 32, treePaint);
+        canvas.drawCircle(66, yPos + 800, 32, treePaint);
+        canvas.drawCircle(702, yPos + 800, 32, treePaint);
+        canvas.drawLine(234, yPos, 234, height + 100, linePaint);
+        canvas.drawLine(334, yPos, 334, height + 100, linePaint);
+        canvas.drawLine(434, yPos, 434, height + 100, linePaint);
+        canvas.drawLine(534, yPos, 534, height + 100, linePaint);
+        /*canvas.drawRect(0, 0, 133, GameSurfaceView.GAME_HEIGHT, grassPaint);
         canvas.drawRect(134, 0, 634,  GameSurfaceView.GAME_HEIGHT, roadPaint);
         canvas.drawRect(635, 0, 768,  GameSurfaceView.GAME_HEIGHT, grassPaint);
         canvas.drawLine(234, yPos, 234, GameSurfaceView.GAME_HEIGHT + 100, linePaint);
         canvas.drawLine(334, yPos, 334, GameSurfaceView.GAME_HEIGHT + 100, linePaint);
         canvas.drawLine(434, yPos, 434, GameSurfaceView.GAME_HEIGHT + 100, linePaint);
-        canvas.drawLine(534, yPos, 534, GameSurfaceView.GAME_HEIGHT + 100, linePaint);
-        Log.d(TAG, "Scenery drawn");
+        canvas.drawLine(534, yPos, 534, GameSurfaceView.GAME_HEIGHT + 100, linePaint);*/
+        //Log.d(TAG, "Scenery drawn");
     }
 
     public void move() {

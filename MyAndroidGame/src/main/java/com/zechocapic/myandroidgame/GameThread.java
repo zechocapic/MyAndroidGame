@@ -1,9 +1,8 @@
 package com.zechocapic.myandroidgame;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.view.SurfaceHolder;
+import android.content.res.Resources;
 import android.util.Log;
 
 import java.util.Random;
@@ -29,12 +28,14 @@ public class GameThread extends Thread {
     private GameObstacle[] gameObstacles;
     private GameScenery gameScenery;
     private GameOver gameOver;
+    private GameScore gameScore;
 
     public GameThread(SurfaceHolder surfaceHolder, GameSurfaceView gameSurfaceView) {
         super();
         this.surfaceHolder = surfaceHolder;
         this.gameSurfaceView = gameSurfaceView;
-        this.gameCar = new GameCar(5);
+        Resources resources = gameSurfaceView.getResources();
+        this.gameCar = new GameCar(resources, 5);
         this.gameObstacles = new GameObstacle[5];
         Random random = new Random();
         for (int i=0; i<5; i++) {
@@ -42,6 +43,7 @@ public class GameThread extends Thread {
         }
         this.gameScenery = new GameScenery(20);
         this.gameOver = new GameOver();
+        this.gameScore = new GameScore();
     }
 
     public void setRunning(boolean running) {
@@ -59,7 +61,7 @@ public class GameThread extends Thread {
         int sleepTime;
         int frameSkipped;
 
-        Log.d(TAG,"Starting game mega loop !");
+        //Log.d(TAG,"Starting game mega loop !");
 
         while (running) {
             beginTime = System.currentTimeMillis();
@@ -73,9 +75,9 @@ public class GameThread extends Thread {
                     gameObstacles[i].move();
                     if (detectCollision()) {
                         gameState = GAME_OVER;
-                        Log.d(TAG,"update done, game over");
+                        //Log.d(TAG,"update done, game over");
                     } else {
-                        Log.d(TAG, "update done, game ok");
+                        //Log.d(TAG, "update done, game ok");
                     }
                 }
             }
@@ -85,7 +87,9 @@ public class GameThread extends Thread {
             try {
                 canvas = surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
-                    canvasDraw(canvas, gameState);
+                    if ( canvas != null) {
+                        canvasDraw(canvas, gameState);
+                    }
                 }
             } finally {
                 if (canvas != null) {
@@ -108,7 +112,7 @@ public class GameThread extends Thread {
             while (sleepTime < 0 && frameSkipped < MAX_FRAME_SKIPS) {
                 for (int i = 0; i < 5; i++) {
                     gameObstacles[i].move();
-                    Log.d(TAG,"frames skipped = " + frameSkipped);
+                    //Log.d(TAG,"frames skipped = " + frameSkipped);
 
                     sleepTime += FRAME_PERIOD;
                     frameSkipped++;
@@ -116,7 +120,7 @@ public class GameThread extends Thread {
                 }
             }
         }
-        Log.d(TAG, "game loop ended !");
+        //Log.d(TAG, "game loop ended !");
     }
 
     public void canvasDraw (Canvas canvas, int gameState) {
@@ -126,6 +130,7 @@ public class GameThread extends Thread {
             for (int i = 0; i < 5; i++) {
                 gameObstacles[i].draw(canvas);
             }
+            gameScore.draw(canvas,GameObstacle.getNbObstaclesAvoided());
         } else {
             gameOver.draw(canvas);
         }

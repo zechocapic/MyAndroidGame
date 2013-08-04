@@ -17,9 +17,12 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     public static final int GAME_WIDTH = 768;
 
     private GameThread gameThread;
+    public Context gameSurfaceContext;
 
     public GameSurfaceView(Context context) {
         super(context);
+
+        this.gameSurfaceContext = context;
 
         // getting the holder and adding callback to him
         getHolder().addCallback(this);

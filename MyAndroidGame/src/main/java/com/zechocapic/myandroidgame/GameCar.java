@@ -1,9 +1,11 @@
 package com.zechocapic.myandroidgame;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
 
 /**
  * Created by zechocapic on 30/07/13.
@@ -19,13 +21,15 @@ public class GameCar {
     private int yPos;
     private int lateralSpeed;
     private Paint carPaint;
+    private Bitmap bitmap;
 
-    public GameCar(int lateralSpeed) {
+    public GameCar(Resources resources, int lateralSpeed) {
         this.xPos = GameSurfaceView.GAME_WIDTH / 2;
         this.yPos = 1000;
         this.lateralSpeed = lateralSpeed;
         this.carPaint = new Paint();
         carPaint.setColor(Color.WHITE);
+        this.bitmap = BitmapFactory.decodeResource(resources, R.drawable.gamecar);
     }
 
     public int getxPos() {
@@ -37,8 +41,9 @@ public class GameCar {
     }
 
     public void draw(Canvas canvas) {
-        canvas.drawRect(xPos - 32, yPos - 48, xPos + 32, yPos + 48, carPaint);
-        Log.d(TAG, "x = " + xPos + " ; y = " + yPos);
+        //canvas.drawRect(xPos - 32, yPos - 48, xPos + 32, yPos + 48, carPaint);
+        canvas.drawBitmap(bitmap, xPos - (bitmap.getWidth() /2), yPos, null);
+        //Log.d(TAG, "x = " + xPos + " ; y = " + yPos);
     }
 
     public void move(int movement) {

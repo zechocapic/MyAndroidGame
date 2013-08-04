@@ -17,6 +17,7 @@ public class GameObstacle {
     private int yPos;
     private int speed;
     private Paint obstaclePaint;
+    private static int nbObstaclesAvoided = 0;
 
     public GameObstacle(int xPos, int speed) {
         this.xPos = xPos;
@@ -34,9 +35,13 @@ public class GameObstacle {
         return yPos;
     }
 
+    public static int getNbObstaclesAvoided() {
+        return nbObstaclesAvoided;
+    }
+
     public void draw(Canvas canvas) {
         canvas.drawRect(xPos - 32, yPos - 48, xPos + 32, yPos + 48, obstaclePaint);
-        Log.d(TAG, "x = " + xPos + " ; y = " + yPos);
+        //Log.d(TAG, "x = " + xPos + " ; y = " + yPos);
     }
 
     public void move() {
@@ -46,6 +51,7 @@ public class GameObstacle {
             Random random = new Random();
             this.speed = random.nextInt(10) + 1;
             yPos = 100;
+            nbObstaclesAvoided++;
         }
 
     }
