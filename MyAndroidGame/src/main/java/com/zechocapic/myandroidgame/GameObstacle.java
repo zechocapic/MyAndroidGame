@@ -1,9 +1,9 @@
 package com.zechocapic.myandroidgame;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.util.Log;
 
 import java.util.Random;
 
@@ -11,20 +11,20 @@ import java.util.Random;
  * Created by zechocapic on 30/07/13.
  */
 public class GameObstacle {
-    private static String TAG = GameObstacle.class.getSimpleName();
+    //private static String TAG = GameObstacle.class.getSimpleName();
+
+    private static int nbObstaclesAvoided = 0;
 
     private int xPos;
     private int yPos;
     private int speed;
-    private Paint obstaclePaint;
-    private static int nbObstaclesAvoided = 0;
+    private Bitmap bitmap;
 
-    public GameObstacle(int xPos, int speed) {
+    public GameObstacle(Resources resources, int xPos, int speed) {
         this.xPos = xPos;
-        this.yPos = 100;
+        this.yPos = 0;
         this.speed = speed;
-        this.obstaclePaint= new Paint();
-        obstaclePaint.setColor(Color.RED);
+        this.bitmap = BitmapFactory.decodeResource(resources, R.drawable.gameobstacle);
     }
 
     public int getxPos() {
@@ -40,8 +40,7 @@ public class GameObstacle {
     }
 
     public void draw(Canvas canvas) {
-        canvas.drawRect(xPos - 32, yPos - 48, xPos + 32, yPos + 48, obstaclePaint);
-        //Log.d(TAG, "x = " + xPos + " ; y = " + yPos);
+        canvas.drawBitmap(bitmap, xPos - (bitmap.getWidth() / 2), yPos -(bitmap.getHeight() / 2), null);
     }
 
     public void move() {
@@ -50,7 +49,7 @@ public class GameObstacle {
         } else {
             Random random = new Random();
             this.speed = random.nextInt(10) + 1;
-            yPos = 100;
+            yPos = 0;
             nbObstaclesAvoided++;
         }
 
