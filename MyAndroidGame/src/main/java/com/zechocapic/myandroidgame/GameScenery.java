@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 
 /**
@@ -15,6 +14,7 @@ public class GameScenery {
     //private static String TAG = GameScenery.class.getSimpleName();
 
     private int speed;
+    private int levelSpeed;
     private int yPos;
     private Bitmap treeBitmap;
     private Paint roadPaint;
@@ -23,6 +23,7 @@ public class GameScenery {
 
     public GameScenery(Resources resources, int speed) {
         this.speed = speed;
+        this.levelSpeed = 0;
         this.yPos = 0;
         this.roadPaint = new Paint();
         this.roadPaint.setColor(Color.GRAY);
@@ -42,6 +43,14 @@ public class GameScenery {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    public int getLevelSpeed() {
+        return levelSpeed;
+    }
+
+    public void setLevelSpeed(int levelSpeed) {
+        this.levelSpeed = levelSpeed;
     }
 
     public void draw(Canvas canvas) {
@@ -65,7 +74,7 @@ public class GameScenery {
 
     public void move() {
         if (yPos < 1200) {
-            this.yPos += this.speed;
+            this.yPos += this.speed + this.levelSpeed;
         }
         else {
             yPos = 0;

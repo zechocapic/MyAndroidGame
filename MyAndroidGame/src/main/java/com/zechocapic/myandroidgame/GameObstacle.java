@@ -18,12 +18,14 @@ public class GameObstacle {
     private int xPos;
     private int yPos;
     private int speed;
+    private int levelSpeed;
     private Bitmap bitmap;
 
     public GameObstacle(Resources resources, int xPos, int speed) {
         this.xPos = xPos;
         this.yPos = 0;
         this.speed = speed;
+        this.levelSpeed = 0;
         Random random = new Random();
         int color = random.nextInt(6);
         if (color == 0) {
@@ -57,6 +59,14 @@ public class GameObstacle {
         this.speed = speed;
     }
 
+    public int getLevelSpeed() {
+        return levelSpeed;
+    }
+
+    public void setLevelSpeed(int levelSpeed) {
+        this.levelSpeed = levelSpeed;
+    }
+
     public static int getNbObstaclesAvoided() {
         return nbObstaclesAvoided;
     }
@@ -70,11 +80,11 @@ public class GameObstacle {
     }
 
     public void move() {
-        if (yPos < 1200) {
-            yPos += speed;
+        if (this.yPos < 1200) {
+            this.yPos += this.speed + this.levelSpeed;
         } else {
             Random random = new Random();
-            this.speed = random.nextInt(10) + 1;
+            this.speed = random.nextInt(5) + 1;
             yPos = 0;
             nbObstaclesAvoided++;
         }
