@@ -19,10 +19,16 @@ public final class R {
     }
     public static final class drawable {
         public static final int gamecar=0x7f020000;
-        public static final int gameobstacle=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int red_car_icon=0x7f020003;
-        public static final int tree=0x7f020004;
+        public static final int gamecarblue=0x7f020001;
+        public static final int gamecarbrown=0x7f020002;
+        public static final int gamecargreen=0x7f020003;
+        public static final int gamecarlightblue=0x7f020004;
+        public static final int gamecarorange=0x7f020005;
+        public static final int gamecaryellow=0x7f020006;
+        public static final int gameobstacle=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int red_car_icon=0x7f020009;
+        public static final int tree=0x7f02000a;
     }
     public static final class id {
         public static final int action_settings=0x7f080000;
@@ -33,6 +39,7 @@ public final class R {
         public static final int activity_options=0x7f030002;
         public static final int activity_play=0x7f030003;
         public static final int activity_rules=0x7f030004;
+        public static final int activity_scores=0x7f030005;
     }
     public static final class menu {
         public static final int credits=0x7f070000;
@@ -40,6 +47,7 @@ public final class R {
         public static final int main_game=0x7f070002;
         public static final int options=0x7f070003;
         public static final int play=0x7f070004;
+        public static final int scores=0x7f070005;
     }
     public static final class string {
         /**  From: file:/D:/WorkSpaces/AndroidStudio/MyAndroidGameProject/MyAndroidGame/src/main/res/values/strings.xml 
@@ -50,11 +58,13 @@ public final class R {
         public static final int hello_options=0x7f050003;
         public static final int hello_play=0x7f050004;
         public static final int hello_rules=0x7f050005;
-        public static final int hello_world=0x7f050006;
-        public static final int title_activity_credits=0x7f050007;
-        public static final int title_activity_options=0x7f050008;
-        public static final int title_activity_play=0x7f050009;
-        public static final int title_activity_rules=0x7f05000a;
+        public static final int hello_scores=0x7f050006;
+        public static final int hello_world=0x7f050007;
+        public static final int title_activity_credits=0x7f050008;
+        public static final int title_activity_options=0x7f050009;
+        public static final int title_activity_play=0x7f05000a;
+        public static final int title_activity_rules=0x7f05000b;
+        public static final int title_activity_scores=0x7f05000c;
     }
     public static final class style {
         /**  From: file:/D:/WorkSpaces/AndroidStudio/MyAndroidGameProject/MyAndroidGame/src/main/res/values/styles.xml 

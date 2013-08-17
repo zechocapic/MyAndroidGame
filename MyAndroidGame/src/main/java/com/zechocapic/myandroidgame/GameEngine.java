@@ -32,7 +32,7 @@ public class GameEngine {
         this.context = context;
         this.resources = context.getResources();
 
-        this.gameCar = new GameCar(resources, 5);
+        this.gameCar = new GameCar(resources, 0, 5);
         this.gameObstacles = new GameObstacle[5];
         Random random = new Random();
         for (int i = 0; i < 5; i++) {
@@ -46,11 +46,14 @@ public class GameEngine {
     public void Update() {
         if (gameState == GAME_OK) {
             gameCar.move(carMovement);
+            gameScenery.setSpeed(gameScenery.getSpeed() + GameObstacle.getNbObstaclesAvoided() / 10);
             gameScenery.move();
             for (int i = 0; i < 5; i++) {
+                gameObstacles[i].setSpeed(gameObstacles[i].getSpeed() + GameObstacle.getNbObstaclesAvoided() / 10);
                 gameObstacles[i].move();
                 if (detectCollision()) {
                     gameState = GAME_OVER;
+                    GameObstacle.setNbObstaclesAvoided(0);
                 }
             }
         }

@@ -24,7 +24,21 @@ public class GameObstacle {
         this.xPos = xPos;
         this.yPos = 0;
         this.speed = speed;
-        this.bitmap = BitmapFactory.decodeResource(resources, R.drawable.gameobstacle);
+        Random random = new Random();
+        int color = random.nextInt(6);
+        if (color == 0) {
+            this.bitmap = BitmapFactory.decodeResource(resources, R.drawable.gamecarblue);
+        } else if (color == 1) {
+            this.bitmap = BitmapFactory.decodeResource(resources, R.drawable.gamecarbrown);
+        } else if (color == 2) {
+            this.bitmap = BitmapFactory.decodeResource(resources, R.drawable.gamecargreen);
+        } else if (color == 3) {
+            this.bitmap = BitmapFactory.decodeResource(resources, R.drawable.gamecarlightblue);
+        } else if (color == 4) {
+            this.bitmap = BitmapFactory.decodeResource(resources, R.drawable.gamecarorange);
+        } else if (color == 5) {
+            this.bitmap = BitmapFactory.decodeResource(resources, R.drawable.gamecaryellow);
+        }
     }
 
     public int getxPos() {
@@ -35,8 +49,20 @@ public class GameObstacle {
         return yPos;
     }
 
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
     public static int getNbObstaclesAvoided() {
         return nbObstaclesAvoided;
+    }
+
+    public static void setNbObstaclesAvoided(int nbObstaclesAvoided) {
+        GameObstacle.nbObstaclesAvoided = nbObstaclesAvoided;
     }
 
     public void draw(Canvas canvas) {

@@ -72,6 +72,12 @@ public class MainGame extends Activity {
         startActivity(intent);
     }
 
+    public void onClickScores(View v) {
+        Toast.makeText(this, "You clicked on Scores !", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, Scores.class);
+        startActivity(intent);
+    }
+
     public void onClickCredits(View v) {
         Toast.makeText(this, "You clicked on Credits !", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, Credits.class);

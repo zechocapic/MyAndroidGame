@@ -36,6 +36,14 @@ public class GameScenery {
         this.linePaint.setPathEffect(new DashPathEffect(new float[] {100, 300}, 0));*/
     }
 
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
     public void draw(Canvas canvas) {
         int height = canvas.getHeight();
         canvas.drawRect(0, 0, 133, height, grassPaint);

@@ -17,13 +17,15 @@ public class GameCar {
 
     private int xPos;
     private int yPos;
+    private int verticalSpeed;
     private int lateralSpeed;
     private Bitmap bitmap;
 
-    public GameCar(Resources resources, int lateralSpeed) {
+    public GameCar(Resources resources, int verticalSpeed, int lateralSpeed) {
         this.xPos = GameSurfaceView.GAME_WIDTH / 2;
         this.yPos = 1000;
         this.lateralSpeed = lateralSpeed;
+        this.verticalSpeed = verticalSpeed;
         this.bitmap = BitmapFactory.decodeResource(resources, R.drawable.gamecar);
     }
 
@@ -33,6 +35,22 @@ public class GameCar {
 
     public int getyPos() {
         return yPos;
+    }
+
+    public int getVerticalSpeed() {
+        return verticalSpeed;
+    }
+
+    public void setVerticalSpeed(int verticalSpeed) {
+        this.verticalSpeed = verticalSpeed;
+    }
+
+    public int getLateralSpeed() {
+        return lateralSpeed;
+    }
+
+    public void setLateralSpeed(int lateralSpeed) {
+        this.lateralSpeed = lateralSpeed;
     }
 
     public void draw(Canvas canvas) {
